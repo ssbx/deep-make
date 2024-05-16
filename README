@@ -1,7 +1,9 @@
 This script search for a makefile in parent directories until it reaches
 SRC_ROOT. Can then call make deep inside a project.
 
-- Call to system make are made with a PATH variable where $HOME/bin is the
-  last entry
-- The script resite in $HOME/bin
+- The script must reside in $HOME/bin
 - Edit SRC_ROOT variable to fit your env, default is $HOME/src
+- Call to system make are made with a PATH variable where $HOME/bin is the
+  last entry (be aware of)
+- Will call system make if any of -C|-f|--directory=*|--file=*|--makefile=*
+  arguments are present

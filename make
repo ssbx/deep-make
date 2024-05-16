@@ -1,11 +1,22 @@
 #!/bin/env bash
 
-set -e
-
 SRC_ROOT=$HOME/src
+
+echo "!!!! I am not make, but a make wrapper. Lets continue ... "
 
 # PATH2 put $HOME/bin at the lowest priority
 PATH2="$(echo -n $PATH | sed "s#:$HOME/bin##g"):$HOME/bin"
+
+# if -C, --directory=*, -f, --file=*, --makefile=* are set do nothing
+for i in "$@"; do
+  case $i in
+    -C|-f|--directory=*|--file=*|--makefile=*)
+      PATH=${PATH2} make "$@"
+      exit $?;;
+    *)
+      ;;
+  esac
+done
 
 # if not in SRC_ROOT subdir, return with normal make command
 if ! echo -n $PWD | grep "^${SRC_ROOT}/" > /dev/null; then
