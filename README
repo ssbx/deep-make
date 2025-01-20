@@ -1,5 +1,5 @@
 This script search for a makefile in parent directories until it reaches
-SRC_ROOT. Can then call make deep inside a project.
+SRC_ROOT. We can then call make deep inside a project directories.
 
 - The script must reside in $HOME/bin
 - Edit SRC_ROOT variable to fit your env, default is $HOME/src
